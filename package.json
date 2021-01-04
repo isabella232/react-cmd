@@ -1,57 +1,63 @@
 {
-  "name": "react-cmd",
-  "version": "1.0.0",
-  "description": "Extensive React command palette by PostHog",
-  "keywords": [
-    "react",
-    "commands",
-    "palette",
-    "bar"
-  ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "repository": "github:PostHog/react-cmd",
-  "bugs": {
-    "url": "https://github.com/PostHog/react-cmd/issues"
-  },
-  "homepage": "https://github.com/PostHog/react-cmd#readme",
-  "author": "PostHog <hey@posthog.com>",
-  "license": "MIT",
-  "scripts": {
-    "build": "yarn clean && yarn compile",
-    "clean": "rimraf dist/*",
-    "compile": "tsc",
-    "eslint": "eslint --fix .",
-    "eslint:check": "eslint .",
-    "prettier": "prettier --write .",
-    "prettier:check": "prettier --check .",
-    "prepublishOnly": "yarn build"
-  },
-  "devDependencies": {
-    "@types/react": "^16.8.0",
-    "@types/react-dom": "^16.8.0",
-    "eslint": "^7.17.0",
-    "husky": "^4.3.6",
-    "kea": "^2.0.0",
-    "lint-staged": "^10.5.3",
-    "prettier": "^2.2.1",
-    "typescript": "^4.1.3"
-  },
-  "peerDependencies": {
-    "kea": ">=2.0.0",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "react-cmd",
+    "version": "1.0.0",
+    "description": "Extensive React command palette by PostHog",
+    "keywords": [
+        "react",
+        "commands",
+        "palette",
+        "bar"
+    ],
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "repository": "github:PostHog/react-cmd",
+    "bugs": {
+        "url": "https://github.com/PostHog/react-cmd/issues"
+    },
+    "homepage": "https://github.com/PostHog/react-cmd#readme",
+    "author": "PostHog <hey@posthog.com>",
+    "license": "MIT",
+    "scripts": {
+        "build": "yarn clean && yarn compile",
+        "clean": "rimraf dist/*",
+        "compile": "tsc",
+        "eslint": "eslint --fix .",
+        "eslint:check": "eslint .",
+        "prettier": "prettier --write .",
+        "prettier:check": "prettier --check .",
+        "prepublishOnly": "yarn build"
+    },
+    "devDependencies": {
+        "@types/react": "^16.8.0",
+        "@types/react-dom": "^16.8.0",
+        "@typescript-eslint/eslint-plugin": "^4.11.1",
+        "@typescript-eslint/parser": "^4.11.1",
+        "eslint": "^7.17.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-prettier": "^3.3.0",
+        "eslint-plugin-react": "^7.22.0",
+        "husky": "^4.3.6",
+        "kea": "^2.0.0",
+        "lint-staged": "^10.5.3",
+        "prettier": "^2.2.1",
+        "typescript": "^4.1.3"
+    },
+    "peerDependencies": {
+        "kea": ">=2.0.0",
+        "react": ">=16.8.0",
+        "react-dom": ">=16.8.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,ts}": "eslint --fix",
+        "*.{js,ts,css,scss}": "prettier --write"
+    },
+    "dependencies": {
+        "goober": "^2.0.19-next.1"
     }
-  },
-  "lint-staged": {
-    "*.{js,ts}": "eslint --fix",
-    "*.{js,ts,css,scss}": "prettier --write"
-  },
-  "dependencies": {
-    "goober": "^2.0.19-next.1"
-  }
 }
