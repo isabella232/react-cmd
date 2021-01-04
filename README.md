@@ -1,5 +1,7 @@
 # react-cmd
 
+[![npm](https://img.shields.io/npm/v/react-cmd.svg)](https://www.npmjs.com/package/react-cmd)
+
 Extensive React command palette, made at PostHog.
 
 ![react-cmd in production at PostHog](example.png)
