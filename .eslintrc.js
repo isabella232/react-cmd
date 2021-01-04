@@ -13,4 +13,9 @@ module.exports = {
         '@typescript-eslint/no-empty-function': 'off',
         curly: 'error',
     },
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
+        },
+    },
 }
