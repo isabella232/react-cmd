@@ -4,9 +4,7 @@
         "moduleResolution": "node",
         "target": "ES2016",
         "outDir": "dist",
-        "lib": [
-            "ES2020", "DOM"
-        ],
+        "lib": ["ES2020", "DOM"],
         "jsx": "react",
         "declaration": true,
         "sourceMap": true,
@@ -16,9 +14,7 @@
         "noImplicitReturns": true,
         "noUnusedParameters": true,
         "noUnusedLocals": true,
-        "forceConsistentCasingInFileNames": true,
+        "forceConsistentCasingInFileNames": true
     },
-    "exclude": [
-        "node_modules"
-    ]
+    "exclude": ["node_modules"]
 }

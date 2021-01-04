@@ -1,2 +1,3 @@
 # react-cmd
- Extensive React command palette by PostHog
+
+Extensive React command palette by PostHog
