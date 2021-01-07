@@ -50,11 +50,6 @@ jobs:
                   tag_name: ${{ env.PACKAGE_VERSION_TAG }}
                   release_name: ${{ env.PACKAGE_VERSION }}
 
-            - name: Publish the package in the npm registry
-              run: npm publish --access public
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
             - name: Switch to the GitHub registry
               run: npm config set registry https://npm.pkg.github.com
 
