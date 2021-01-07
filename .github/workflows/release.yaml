@@ -51,6 +51,6 @@ jobs:
                   release_name: ${{ env.PACKAGE_VERSION }}
 
             - name: Publish the package in the npm registry
-              run: npm publish --access public
+              run: yarn publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
