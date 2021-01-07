@@ -30,22 +30,23 @@ jobs:
                   echo "PACKAGE_VERSION_TAG=$PACKAGE_VERSION_TAG" >> $GITHUB_ENV
                   echo "IS_NEW_VERSION=$IS_NEW_VERSION" >> $GITHUB_ENV
 
-            - name: Cancel if this isn't a new version
-              run: ([ "$IS_NEW_VERSION" = true ] || exit 1)
-
             - name: Set up Node 14
+              if: ([ "$IS_NEW_VERSION" = true ])
               uses: actions/setup-node@v2
               with:
                   node-version: 14
                   registry-url: https://registry.npmjs.org
 
             - name: Install dependencies
+              if: ([ "$IS_NEW_VERSION" = true ])
               run: yarn --frozen-lockfile
 
             - name: Build the package
+              if: ([ "$IS_NEW_VERSION" = true ])
               run: yarn build
 
             - name: Create GitHub release
+              if: ([ "$IS_NEW_VERSION" = true ])
               uses: actions/create-release@v1
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -54,6 +55,7 @@ jobs:
                   release_name: ${{ env.PACKAGE_VERSION }}
 
             - name: Publish the package in the npm registry
+              if: ([ "$IS_NEW_VERSION" = true ])
               run: yarn publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
