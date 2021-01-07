@@ -33,22 +33,22 @@ jobs:
                   echo "::set-output name=IS_NEW_VERSION::$IS_NEW_VERSION"
 
             - name: Set up Node 14
-              if: steps.version.outputs.IS_NEW_VERSION == true
+              if: steps.version.outputs.IS_NEW_VERSION == 'true'
               uses: actions/setup-node@v2
               with:
                   node-version: 14
                   registry-url: https://registry.npmjs.org
 
             - name: Install dependencies
-              if: steps.version.outputs.IS_NEW_VERSION == true
+              if: steps.version.outputs.IS_NEW_VERSION == 'true'
               run: yarn --frozen-lockfile
 
             - name: Build the package
-              if: steps.version.outputs.IS_NEW_VERSION == true
+              if: steps.version.outputs.IS_NEW_VERSION == 'true'
               run: yarn build
 
             - name: Create GitHub release
-              if: steps.version.outputs.IS_NEW_VERSION == true
+              if: steps.version.outputs.IS_NEW_VERSION == 'true'
               uses: actions/create-release@v1
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -57,7 +57,7 @@ jobs:
                   release_name: ${{ env.PACKAGE_VERSION }}
 
             - name: Publish the package in the npm registry
-              if: steps.version.outputs.OUTPUT == true
+              if: steps.version.outputs.IS_NEW_VERSION == 'true'
               run: yarn publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
