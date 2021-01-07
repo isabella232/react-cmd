@@ -31,7 +31,7 @@ jobs:
             - name: Cancel if this isn't a new version
               run: ([ "$IS_NEW_VERSION" = true ] || exit 1)
 
-            - name: Set up Node 14
+            - name: Set up Node 14 for the npm registry
               uses: actions/setup-node@v2
               with:
                   node-version: 14
@@ -56,7 +56,13 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+            - name: Set up Node 14 for the GitHub registry
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 14
+                  registry-url: https://npm.pkg.github.com
+
             - name: Publish the package in the GitHub registry
-              run: YARN_REGISTRY="https://npm.pkg.github.com" yarn publish --access public
+              run: yarn publish --access public
               env:
-                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
