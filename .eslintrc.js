@@ -4,8 +4,7 @@ module.exports = {
     extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
-        /*'plugin:import/errors', 'plugin:import/warnings',*/ 'plugin:prettier/recommended',
-        'prettier/@typescript-eslint',
+        /*'plugin:import/errors', 'plugin:import/warnings'*/
     ],
     ignorePatterns: ['dist', 'node_modules'],
     rules: {
